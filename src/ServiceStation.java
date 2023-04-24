@@ -1,13 +1,14 @@
 class ServiceStation {
     public void check(Vehicle vehicle) {
-        System.out.println("Обслуживаем " + vehicle.modelName);
-        for (int i = 0; i < vehicle.wheelsCount; i++) {
+        System.out.println("Обслуживаем " + vehicle.getModelName());
+        for (int i = 0; i < vehicle.getWheelsCount(); i++) {
             vehicle.updateTyre();
         }
-        vehicle.additionalCheck();
+        if (vehicle instanceof Checkable) {
+            ((Checkable) vehicle).additionalCheck();
+        }
     }
-
-    // Перегруженный метод check() для каждого типа транспортного средства(однако в моем решении полиморфизм уже обеспечивает эту функциональность)
+    //добавил перегруженные методы check() для каждого типа наследника Vehicle
     public void check(Car car) {
         check((Vehicle) car);
     }

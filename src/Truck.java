@@ -1,12 +1,17 @@
- class Truck extends Vehicle {
+ class Truck extends Vehicle implements Checkable {
      public Truck(String modelName, int wheelsCount) {
-         super(modelName, wheelsCount);
+         this.modelName = modelName;
+         this.wheelsCount = wheelsCount;
+     }
+
+     @Override
+     public void updateTyre() {
+         System.out.println("Меняем покрышку");
      }
 
      @Override
      public void additionalCheck() {
-         System.out.println("Проверяем двигатель");
-         System.out.println("Проверяем прицеп");
+         System.out.println("Проверяем двигатель и прицеп");
      }
 
 }
